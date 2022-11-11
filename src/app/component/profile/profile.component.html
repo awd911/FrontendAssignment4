@@ -1,0 +1,20 @@
+<p>profile works!</p>
+
+<h1>{{title}}</h1>
+
+<img [src]="imageURL" width = "300">
+
+<br>
+<button (click)="incrementCount()">Click to increase view count</button>
+
+<p>Counter: {{viewCount}}</p>
+
+<div>
+    <input type="text" [(ngModel)]="name">
+    <p>Hello, {{name}}</p>
+
+</div>
+<ul>
+    <li *ngFor="let item of list">{{item}}</li>
+</ul>
+{{list}}
