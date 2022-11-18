@@ -26,10 +26,10 @@ const routes: Routes = [
   { path: 'albums/recent', component: RecentAlbumsComponent,canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }},
   { path:'profile/:profileId', component: ProfileComponent,canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   { path:'albums/me', component: MyAlbumsComponent,canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  { path:'create', component: CreateAlbumComponent },
-  { path:'album/:albumId', component: AlbumDetailsComponent },
-  { path:'upload/:albumId', component: UploadPictureComponent },
-  { path:'photo/:photoId', component: PhotoDetailsComponent }
+  { path:'create', component: CreateAlbumComponent,canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  { path:'album/:albumId', component: AlbumDetailsComponent,canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  { path:'upload/:albumId', component: UploadPictureComponent,canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  { path:'photo/:photoId', component: PhotoDetailsComponent,canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } }
 ];
 
 @NgModule({
