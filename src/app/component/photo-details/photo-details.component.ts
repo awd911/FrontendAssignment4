@@ -56,4 +56,13 @@ export class PhotoDetailsComponent implements OnInit {
       }
     );
   }
+
+  makeAlbumPhoto(){
+    console.log("The Albums ID", this.photo.albumId);
+    this.photoService.setAlbumPhoto(this.photo.photoUrl,this.photo.albumId).subscribe(
+      response =>{
+        console.log ("Album Photo Updated!! ", response);
+      }
+    );
+  }
 }

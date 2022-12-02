@@ -15,10 +15,20 @@ export class PhotoService {
   setProfilePhoto(photoUrl: string){
     var headers = this.getHeaders();
     var params = new HttpParams().set('profilePhotoUrl',<string>photoUrl);
-    console.log("The params/request body, ", params," URL: ", photoUrl);
+    console.log("The params/request body FOR USER, ", params," URL: ", photoUrl);
 
     return this.http.put<any>(environment.API_BASE_URL+"/user/me/profilePhoto",params,{headers})
   }
+
+  setAlbumPhoto(photoUrl: string, albumId: string){
+    var headers = this.getHeaders();
+    var params = new HttpParams().set('albumId',<string>albumId,);
+    params.append('albumPhoto',<string>photoUrl);
+    console.log("The params/request body FOR ALBUM, ", params," URL: ", photoUrl);
+
+    return this.http.put<any>(environment.API_BASE_URL+"/album/coverPhoto",params,{headers})
+  }
+
 
   getPhoto(photoId: String){
     var headers = this.getHeaders();
