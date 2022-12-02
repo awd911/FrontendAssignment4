@@ -20,6 +20,7 @@ import { PhotoDetailsComponent } from './component/photo-details/photo-details.c
 import { RecentAlbumsComponent } from './component/recent-albums/recent-albums.component';
 import { UserService } from './service/user.service';
 import { AlbumService } from './service/album.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {HttpClientModule} from '@angular/common/http';
 
@@ -45,6 +46,7 @@ import {HttpClientModule} from '@angular/common/http';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     HttpClientModule,
+    NgbModule,
   ],
   providers: [ UserService ],
   bootstrap: [AppComponent]

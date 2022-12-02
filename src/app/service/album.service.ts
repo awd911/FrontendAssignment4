@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 
@@ -15,6 +16,14 @@ export class AlbumService {
 
     return this.http.get(environment.API_BASE_URL+"/albums",{headers})
   }
+
+  getPhotos(albumId: String){
+    var headers = this.getHeaders();
+
+    return this.http.get(environment.API_BASE_URL+"/album/"+albumId+"/photos",{headers})
+
+  }
+
 
   getOneAlbum(){
     //var headers = this.getHeaders();

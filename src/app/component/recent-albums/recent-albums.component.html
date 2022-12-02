@@ -1,15 +1,22 @@
 Most recent albums will be listed here!
 
+
 <ul>
-    <li *ngFor="let album of albums">{{album.id}}{{album.title}}</li>
+  <li *ngFor="let album of albums">Album Details 1st URL :{{album.coverPhotos[0].photoUrl}}</li>
 </ul>
 
+<!-- <ul>
+  <li *ngFor="let photo of photos">Photo Details ID: {{photo.id}} Name:{{photo.albumId}} Created By:{{photo.createdBy}} Description:{{photo.dateCreated}} URL:{{photo.photoUrl}}</li>
+</ul> -->
+
 <div class="row">
-    <div class="col-sm-3 pt-3" *ngFor="let album of albums">
+  <div class="col-sm-3 pt-3" *ngFor="let album of albums">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" [src]="album.coverPhotoUrl" alt="Card image cap">
+            <img class="card-img-top" src= "{{album.albumPhoto}}" alt="Card image cap">
+            <!-- <img class="card-img-top" src="www.placecage.com/200/300" alt="Card image cap"> -->
+
             <div class="card-body">
-                <h5 class="card-title">{{album.title}}</h5>
+                <h5 class="card-title">{{album.name}}</h5>
               <a [routerLink]="['/album', album.id]" class ="btn btn-primary">Go To Album</a>
             </div>
           </div>

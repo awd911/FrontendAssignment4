@@ -1,5 +1,35 @@
+<head>
+	<title>Photo Upload</title>
+</head>
+
+<div style="    margin-left: auto;
+margin-right: auto;
+width: 20em">
+  
+  <img src = "http://{{photo.photoUrl}}" class="rounded" width="450px" height="450px" >
+</div>
+
+<div ngbDropdown class="dropdown">
+  <button ngbDropdownToggle class="btn btn-secondary" type="button" id="dropdownMenuButton1" aria-expanded="false">
+Dropdown button
+</button>
+  <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
+    <li><a ngbDropdownItem (click)="makeProfilePhoto()">Change Profile Photo</a></li>
+    <li><a ngbDropdownItem href="#">Change Album Cover</a></li>
+  </ul>
+</div>
+
+<div *ngIf="allComments">
+
+  <div class="alert alert-primary" role="alert" style="text-align: right;" *ngFor="let comment of allComments">
+    {{comment.createdBy}} - {{comment.message}} on {{comment.dateCreated}}
+  </div>
+
+</div>
+
+
 <div class="float-right" style="padding-right: 35px; padding-top: 30px">
-    <a [routerLink]="['/upload', 11]" class="btn btn-success">
+    <a [routerLink]="['/upload', photoId]" class="btn btn-success">
         Upload Photo
     </a>
 </div><br>

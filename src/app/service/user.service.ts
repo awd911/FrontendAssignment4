@@ -7,6 +7,7 @@ import 'firebase/compat/firestore';
 import { User } from '../model/User';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { querystring } from '@firebase/util';
 // import { stringLength } from '@firebase/util';
 
 
@@ -19,8 +20,8 @@ export class UserService implements CanActivate {
 
   user: Observable<any>;
   userIdToken: String;
-  private activateFlag: Boolean;
-  defaultProfilePhoto: string = "https://www.placecage.com/g/200/200";
+  defaultProfilePhoto: string = "www.picsum.photos/200/300";
+  currentEmail: string = "placeholder";
 
   constructor(
     private angularFireAuth: AngularFireAuth,
@@ -63,7 +64,9 @@ export class UserService implements CanActivate {
   logInUser(email: string, password: string) {
     this.angularFireAuth.signInWithEmailAndPassword(email, password).then(
       (value) => {
-        console.log('log in successfull', value);
+
+        this.currentEmail = email;
+        console.log('log in successfull', value , " current users email - ",this.currentEmail);
         this.router.navigate(['/albums/recent'])
       },
       error => {
@@ -75,6 +78,7 @@ export class UserService implements CanActivate {
   signUpUser(email: string, password: string, name: string) {
     this.angularFireAuth.createUserWithEmailAndPassword(email, password).then(
       (value) => {
+        this.currentEmail = email;
         console.log('user sign up successfull', value);
         this.registerUser(email, name);
       },
@@ -85,14 +89,15 @@ export class UserService implements CanActivate {
   }
 
   registerUser(email: string, name: string){
+
     var user :User = {
-      id: "",
+      id: Date.now().toString(),
       name: name,
       email: email,
       profilePhotoUrl: this.defaultProfilePhoto,
       
     };
-
+    console.log("User being registered, ", user);
     this.http.post(environment.API_BASE_URL+"/user/register",user)
     .subscribe( response=>{
       console.log('Registration successfull');
@@ -128,5 +133,22 @@ export class UserService implements CanActivate {
       this.router.navigate(['login']);
       return false;
     }
+  }
+
+  getHeaders(){
+    var headers ={
+      'idToken': localStorage.getItem('userIdToken'),
+      'email':this.currentEmail
+    };
+
+    return headers;
+  }
+
+  getCurrentUserProfile(){
+    var headers = this.getHeaders();
+    console.log("This users email : ",this.currentEmail);
+
+    
+    return this.http.get(environment.API_BASE_URL+"/user",{headers})
   }
 }

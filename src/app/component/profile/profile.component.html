@@ -1,20 +1,14 @@
-<p>profile works!</p>
-
 <h1>{{title}}</h1>
 
-<img [src]="imageURL" width = "300">
-
-<br>
-<button (click)="incrementCount()">Click to increase view count</button>
-
-<p>Counter: {{viewCount}}</p>
-
-<div>
-    <input type="text" [(ngModel)]="name">
-    <p>Hello, {{name}}</p>
-
-</div>
-<ul>
-    <li *ngFor="let item of list">{{item}}</li>
-</ul>
-{{list}}
+<div class="card text-center" *ngIf="user">
+    <div class="card-header">
+      {{user.name}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"> {{user.email}} </h5>
+        <img src="https://{{user.profilePhotoUrl}}" class="rounded-circle">
+    </div>
+    <div class="card-footer text-muted">
+      
+    </div>
+  </div>

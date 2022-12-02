@@ -1,8 +1,14 @@
 export class Photo{
     id: string;
-    name: string;
+    albumId: string;
     createdBy: string;
-    imageURL: string;
-    description: string;
+    photoUrl: string;
+    dateCreated: string;
     
 }
+
+// this.id = id;
+// this.albumId = albumId;
+// this.photoUrl = photoUrl;
+// this.createdBy = createdBy;
+// this.dateCreated = dateCreated;

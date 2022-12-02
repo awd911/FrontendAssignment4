@@ -1,7 +1,10 @@
+import { Photo } from "./Photo";
+
 export class Album {
-    coverPhotoUrl: string;
+    coverPhotos: Photo[];
     createdBy: string;
-    creationDate: string;
+    dateCreated: string;
     id: string;
-    title: string;
+    name: string;
+    albumPhoto: string;
 }

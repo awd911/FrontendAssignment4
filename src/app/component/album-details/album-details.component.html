@@ -9,4 +9,17 @@
         Photo Details
     </a>
 </div><br>
-Details of specific album will be shown here!
+
+<h2>Photos in this Albums</h2>
+
+<div class="row">
+    <div class="col-sm-3 pt-3" *ngFor="let photo of photos">
+          <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="https://{{photo.photoUrl}}" alt="Card image cap">
+              <div class="card-body">
+                  <h5 class="card-title">{{photo.createdBy}}</h5>
+                <a [routerLink]="['/photo/', photo.id]" class ="btn btn-primary">Go To Photo</a>
+              </div>
+            </div>
+      </div>
+    </div>

@@ -1,7 +1,8 @@
 export class Comment{
     id: string;
-    username: string;
-    text: string;
-    creationDate: string;
+    photoId:string;
+    createdBy: string;
+    message: string;
+    dateCreated: string;
     
 }
