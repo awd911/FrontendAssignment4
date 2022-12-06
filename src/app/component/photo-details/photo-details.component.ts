@@ -58,7 +58,7 @@ export class PhotoDetailsComponent implements OnInit {
   }
 
   makeAlbumPhoto(){
-    console.log("The Albums ID", this.photo.albumId);
+    console.log("The Albums ID ", this.photo.albumId, " The new album URL: ", this.photo.photoUrl);
     this.photoService.setAlbumPhoto(this.photo.photoUrl,this.photo.albumId).subscribe(
       response =>{
         console.log ("Album Photo Updated!! ", response);

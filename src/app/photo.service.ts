@@ -22,11 +22,16 @@ export class PhotoService {
 
   setAlbumPhoto(photoUrl: string, albumId: string){
     var headers = this.getHeaders();
-    var params = new HttpParams().set('albumId',<string>albumId,);
-    params.append('albumPhoto',<string>photoUrl);
-    console.log("The params/request body FOR ALBUM, ", params," URL: ", photoUrl);
+    var url = new String;
+    
+    url = environment.API_BASE_URL+"/album/coverPhoto";
 
-    return this.http.put<any>(environment.API_BASE_URL+"/album/coverPhoto",params,{headers})
+    url = url + "?albumId="+albumId + "&albumPhoto="+photoUrl;
+    //var params = new HttpParams().set('albumId',<string>albumId,);
+    //params.append('albumPhoto',<string>photoUrl);
+    console.log("The params/request body FOR ALBUM URL: ", url);
+
+    return this.http.put<any>(<string>url,{headers})
   }
 
 
